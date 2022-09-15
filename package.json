@@ -1,0 +1,19 @@
+{
+  "name": "woodwose-connector-get-woocomerce-inventory",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Brauxel/woodwose-connector-get-woocomerce-inventory.git"
+  },
+  "author": "Aakash Bhatia",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Brauxel/woodwose-connector-get-woocomerce-inventory/issues"
+  },
+  "homepage": "https://github.com/Brauxel/woodwose-connector-get-woocomerce-inventory#readme"
+}
