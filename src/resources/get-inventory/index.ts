@@ -1,3 +1,6 @@
+import { createWooCommerceApi } from '../../utils/woocommerce/createWooCommerceApi'
+
 export const getWooCommerceInventory = async () => {
-  console.log('getWooCommerceInventory')
+  const WooCommerce = createWooCommerceApi()
+  console.log('getWooCommerceInventory', WooCommerce)
 }
