@@ -72,7 +72,7 @@ describe('WooCommerce Utils - createWooCommerceApi', () => {
 
       expect(WooCommerce).toMatchObject({
         classVersion: '1.0.1',
-        url: 'https://woodwose.in',
+        url: 'https://wordpressurl.com',
         wpAPIPrefix: 'wp-json',
         version: 'wc/v3',
         isHttps: true,
