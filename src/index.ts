@@ -1,4 +1,4 @@
-import { createWooCommerceApi } from './utils/wooCommerce/createWooCommerceApi'
+import { createWooCommerceApi } from './utils/woocommerce/createWooCommerceApi'
 
 process.on('uncaughtException', (err) => {
   console.error('There was an uncaught error', err)

@@ -1,4 +1,4 @@
-import { createWooCommerceApi } from '..'
+import { createWooCommerceApi } from '../createWooCommerceApi'
 
 describe('createWooCommerceApi', () => {
   it('should run function', () => {
