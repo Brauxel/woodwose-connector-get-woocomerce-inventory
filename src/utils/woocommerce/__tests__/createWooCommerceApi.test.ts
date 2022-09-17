@@ -1,4 +1,3 @@
-import { hydrateEnv } from '../../hydrators/secrets'
 import { logger } from '../../logger/buildLogger'
 import { createWooCommerceApi } from '../createWooCommerceApi'
 
@@ -13,7 +12,33 @@ describe('WooCommerce Utils - createWooCommerceApi', () => {
   })
 
   describe('Error', () => {
-    it('should return error if ENV values are not provided', () => {
+    const OLD_ENV = process.env
+
+    beforeEach(() => {
+      jest.resetModules()
+      process.env = { ...OLD_ENV }
+    })
+
+    afterEach(() => {
+      process.env = OLD_ENV
+    })
+
+    it('should return error if ENV URL value is not provided', () => {
+      process.env.WORDPRESS_URL = ''
+      expect(() => {
+        createWooCommerceApi()
+      }).toThrowError('Could not create Woo Commerce Api')
+    })
+
+    it('should return error if ENV WOOCOMMERCE_CONSUMER_KEY value is not provided', () => {
+      process.env.WOOCOMMERCE_CONSUMER_KEY = ''
+      expect(() => {
+        createWooCommerceApi()
+      }).toThrowError('Could not create Woo Commerce Api')
+    })
+
+    it('should return error if ENV WOOCOMMERCE_CONSUMER_SECRET value is not provided', () => {
+      process.env.WOOCOMMERCE_CONSUMER_SECRET = ''
       expect(() => {
         createWooCommerceApi()
       }).toThrowError('Could not create Woo Commerce Api')
@@ -21,10 +46,9 @@ describe('WooCommerce Utils - createWooCommerceApi', () => {
   })
 
   describe('Success', () => {
-    beforeAll(async () => {
-      await hydrateEnv()
+    beforeEach(() => {
+      jest.resetModules()
     })
-
     afterAll(() => {
       jest.clearAllMocks()
     })

@@ -12,24 +12,8 @@ const config: Config = {
   },
   testMatch: ['**/__tests__/**/*.test.(ts|js)'],
   testEnvironment: 'node',
-  setupFiles: ['./jest.setup.js'],
+  setupFiles: ['./.jest/jest.setup.ts', './.jest/env.js'],
   testPathIgnorePatterns: ['/node_modules/', '/dist/'],
 }
-
-// module.exports = {
-//   globals: {
-//     'ts-jest': {
-//       tsconfig: 'tsconfig.json',
-//     },
-//   },
-//   moduleFileExtensions: ['ts', 'js'],
-//   transform: {
-//     '^.+\\.(ts|tsx)$': 'ts-jest',
-//   },
-//   testMatch: ['**/__tests__/**/*.test.(ts|js)'],
-//   testEnvironment: 'node',
-//   setupFiles: ['./jest.setup.js'],
-//   testPathIgnorePatterns: ['/node_modules/', '/dist/'],
-// }
 
 export default config
