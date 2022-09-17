@@ -42,6 +42,7 @@
   },
   "dependencies": {
     "@woocommerce/woocommerce-rest-api": "^1.0.1",
+    "dotenv": "^16.0.2",
     "winston": "^3.8.2"
   }
 }
