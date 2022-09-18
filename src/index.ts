@@ -1,4 +1,4 @@
-import { getWooCommerceInventory } from './resources/get-inventory'
+import { fetchAndCreateWooCommerceData } from './resources/get-inventory'
 import { hydrateEnv } from './utils/hydrators/secrets'
 
 process.on('uncaughtException', (err) => {
@@ -8,7 +8,8 @@ process.on('uncaughtException', (err) => {
 
 const start = async () => {
   await hydrateEnv()
-  await getWooCommerceInventory()
+  const data = await fetchAndCreateWooCommerceData()
+  return data
 }
 
 start()

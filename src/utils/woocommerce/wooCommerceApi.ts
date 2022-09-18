@@ -19,7 +19,9 @@ export const createWooCommerceApi = (
   }
 }
 
-export const getWooCommerceData = (endPoint: string): Promise<Product[]> => {
+export const getWooCommerceData = async (
+  endPoint: string
+): Promise<Product[]> => {
   const WooCommerce = createWooCommerceApi()
 
   return WooCommerce.get(endPoint)
@@ -28,3 +30,16 @@ export const getWooCommerceData = (endPoint: string): Promise<Product[]> => {
       logAndThrowError('The GET call returned an error', error)
     })
 }
+
+export const extractDataFromVariations = (variations: Product[]) =>
+  variations.map(
+    ({ id, sku, price, stock_quantity, permalink, attributes }) => ({
+      id,
+      sku,
+      price,
+      size: attributes.find(({ name }) => name.toLowerCase() === 'size')
+        ?.option,
+      quantity: stock_quantity,
+      permalink,
+    })
+  )

@@ -1,12 +1,31 @@
-import { getWooCommerceData } from '../../utils/woocommerce/wooCommerceApi'
+import { logAndThrowError } from '../../utils/logger/loggerHelpers'
+import {
+  extractDataFromVariations,
+  getWooCommerceData,
+} from '../../utils/woocommerce/wooCommerceApi'
 
-export const getWooCommerceInventory = async () => {
-  const wooCommerceProducts = await getWooCommerceData('products')
+export const fetchAndCreateWooCommerceData = async () => {
+  try {
+    const wooCommerceProducts = await getWooCommerceData('products')
 
-  const promises = wooCommerceProducts.map(({ id }) =>
-    getWooCommerceData(`products/${id}/variations`)
-  )
-  Promise.all(promises).then((result) => result)
+    const sanitizedData = []
+    for (const product of wooCommerceProducts) {
+      const variations = await getWooCommerceData(
+        `products/${product.id}/variations`
+      )
 
-  return Promise.all(promises).then((result) => result)
+      sanitizedData.push({
+        id: product.id,
+        name: product.name,
+        variations: extractDataFromVariations(variations),
+      })
+    }
+
+    return sanitizedData
+  } catch (error) {
+    return logAndThrowError(
+      'Error while fetching and creating WooCommerce data',
+      error as Error
+    )
+  }
 }
