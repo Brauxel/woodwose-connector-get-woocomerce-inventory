@@ -1,6 +1,6 @@
-import { getWooCommerceProducts } from '../../utils/woocommerce/getProductData'
+import { getWooCommerceData } from '../../utils/woocommerce/wooCommerceApi'
 
 export const getWooCommerceInventory = async () => {
-  const wooCommerceProducts = await getWooCommerceProducts()
+  const wooCommerceProducts = await getWooCommerceData('products')
   return wooCommerceProducts
 }

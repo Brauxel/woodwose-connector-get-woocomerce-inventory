@@ -1,5 +1,5 @@
 import { logger } from '../../logger/buildLogger'
-import { createWooCommerceApi } from '../createWooCommerceApi'
+import { createWooCommerceApi } from '../wooCommerceApi'
 
 describe('WooCommerce Utils - createWooCommerceApi', () => {
   beforeAll(() => {

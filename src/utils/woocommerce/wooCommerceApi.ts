@@ -17,3 +17,13 @@ export const createWooCommerceApi = (
     return logAndThrowError('Could not create Woo Commerce Api', error as Error)
   }
 }
+
+export const getWooCommerceData = (endPoint: string) => {
+  const WooCommerce = createWooCommerceApi()
+
+  return WooCommerce.get(endPoint)
+    .then((response) => response.data)
+    .catch((error) => {
+      logAndThrowError('The GET call returned an error', error)
+    })
+}
