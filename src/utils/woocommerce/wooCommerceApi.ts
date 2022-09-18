@@ -1,4 +1,5 @@
 import WooCommerceRestApi from '@woocommerce/woocommerce-rest-api'
+import { Product } from '../../@types/WooCommerceTypes'
 import { logAndThrowError } from '../logger/loggerHelpers'
 
 export const createWooCommerceApi = (
@@ -18,7 +19,7 @@ export const createWooCommerceApi = (
   }
 }
 
-export const getWooCommerceData = (endPoint: string) => {
+export const getWooCommerceData = (endPoint: string): Promise<Product[]> => {
   const WooCommerce = createWooCommerceApi()
 
   return WooCommerce.get(endPoint)
