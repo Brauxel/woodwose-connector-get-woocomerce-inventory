@@ -1,23 +1,23 @@
+import { ProductVariation } from '../../@types/WooCommerceTypes'
 import { logAndThrowError } from '../../utils/logger/loggerHelpers'
 import {
   extractDataFromVariations,
-  getWooCommerceData,
+  getWooCommerceProducts,
+  getWooCommerceProductVariations,
 } from '../../utils/woocommerce/wooCommerceApi'
 
 export const fetchAndCreateWooCommerceData = async () => {
   try {
-    const wooCommerceProducts = await getWooCommerceData('products')
+    const wooCommerceProducts = await getWooCommerceProducts()
 
     const sanitizedData = []
     for (const product of wooCommerceProducts) {
-      const variations = await getWooCommerceData(
-        `products/${product.id}/variations`
-      )
+      const variations = await getWooCommerceProductVariations(product.id)
 
       sanitizedData.push({
         id: product.id,
         name: product.name,
-        variations: extractDataFromVariations(variations),
+        variations: extractDataFromVariations(variations as ProductVariation[]),
       })
     }
 

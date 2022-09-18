@@ -1,5 +1,5 @@
 import WooCommerceRestApi from '@woocommerce/woocommerce-rest-api'
-import { Product } from '../../@types/WooCommerceTypes'
+import { Product, ProductVariation } from '../../@types/WooCommerceTypes'
 import { logAndThrowError } from '../logger/loggerHelpers'
 
 export const createWooCommerceApi = (
@@ -19,19 +19,32 @@ export const createWooCommerceApi = (
   }
 }
 
-export const getWooCommerceData = async (
-  endPoint: string
-): Promise<Product[]> => {
+export const getWooCommerceProducts = async (): Promise<Product[]> => {
   const WooCommerce = createWooCommerceApi()
 
-  return WooCommerce.get(endPoint)
+  return WooCommerce.get('products')
     .then((response) => response.data)
     .catch((error) => {
-      logAndThrowError('The GET call returned an error', error)
+      logAndThrowError('The product GET call returned an error', error)
     })
 }
 
-export const extractDataFromVariations = (variations: Product[]) =>
+export const getWooCommerceProductVariations = async (
+  id: number
+): Promise<ProductVariation[]> => {
+  const WooCommerce = createWooCommerceApi()
+
+  return WooCommerce.get(`products/${id}/variations`)
+    .then((response) => response.data)
+    .catch((error) => {
+      logAndThrowError(
+        'The product variations GET call returned an error',
+        error
+      )
+    })
+}
+
+export const extractDataFromVariations = (variations: ProductVariation[]) =>
   variations.map(
     ({ id, sku, price, stock_quantity, permalink, attributes }) => ({
       id,

@@ -37,7 +37,7 @@ interface Image {
   src: string
   name: string
   alt: string
-  position: number
+  position?: number
 }
 
 interface Category {
@@ -96,7 +96,7 @@ export interface Product {
   tax_status: string
   tax_class: string
   manage_stock: boolean
-  stock_quantity: null
+  stock_quantity: number
   in_stock: boolean
   backorders: string
   backorders_allowed: boolean
@@ -123,6 +123,48 @@ export interface Product {
   default_attributes: any[]
   variations: number[]
   grouped_products: any[]
+  menu_order: number
+  meta_data: MetaDatum[]
+  _links: Links
+}
+
+export interface ProductVariation {
+  id: number
+  permalink: string
+  date_created: Date
+  date_created_gmt: Date
+  date_modified: Date
+  date_modified_gmt: Date
+  status: string
+  description: string
+  sku: string
+  price: string
+  regular_price: string
+  sale_price: string
+  date_on_sale_from: null
+  date_on_sale_from_gmt: null
+  date_on_sale_to: null
+  date_on_sale_to_gmt: null
+  on_sale: boolean
+  purchasable: boolean
+  virtual: boolean
+  downloadable: boolean
+  downloads: any[]
+  download_limit: number
+  download_expiry: number
+  tax_status: string
+  tax_class: string
+  manage_stock: boolean
+  stock_quantity: number
+  backorders: string
+  backorders_allowed: boolean
+  backordered: boolean
+  weight: string
+  dimensions: Dimensions
+  shipping_class: string
+  shipping_class_id: number
+  image: Image
+  attributes: Attribute[]
   menu_order: number
   meta_data: MetaDatum[]
   _links: Links
