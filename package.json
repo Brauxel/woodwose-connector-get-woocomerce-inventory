@@ -26,6 +26,7 @@
   "homepage": "https://github.com/Brauxel/woodwose-connector-get-woocomerce-inventory#readme",
   "devDependencies": {
     "@types/jest": "^29.0.2",
+    "@types/woocommerce__woocommerce-rest-api": "^1.0.2",
     "@typescript-eslint/eslint-plugin": "^5.37.0",
     "@typescript-eslint/parser": "^5.37.0",
     "concurrently": "^7.4.0",
@@ -37,6 +38,12 @@
     "prettier": "^2.7.1",
     "rimraf": "^3.0.2",
     "ts-jest": "^29.0.1",
+    "ts-node": "^10.9.1",
     "typescript": "^4.8.3"
+  },
+  "dependencies": {
+    "@woocommerce/woocommerce-rest-api": "^1.0.1",
+    "dotenv": "^16.0.2",
+    "winston": "^3.8.2"
   }
 }
