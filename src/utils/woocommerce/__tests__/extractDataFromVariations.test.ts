@@ -1,4 +1,3 @@
-import { ProductVariation } from '../../../@types/WooCommerceTypes'
 import { productVariationsMockData } from '../../../mocks/wooCommerce/ProductData'
 import { extractDataFromVariations } from '../wooCommerceApi'
 

@@ -59,6 +59,26 @@ interface Dimensions {
   height: string
 }
 
+interface Tag {
+  id: number
+  name: string
+  slug: string
+  description: string
+  count: number
+}
+
+interface DefaultAttributes {
+  id: number
+  name: string
+  option: string
+}
+
+interface Download {
+  id: string
+  name: string
+  file: string
+}
+
 export interface Product {
   id: number
   name: string
@@ -88,7 +108,7 @@ export interface Product {
   total_sales: number
   virtual: boolean
   downloadable: boolean
-  downloads: any[]
+  downloads: Download[]
   download_limit: number
   download_expiry: number
   external_url: string
@@ -117,12 +137,12 @@ export interface Product {
   parent_id: number
   purchase_note: string
   categories: Partial<Category>[]
-  tags: any[]
+  tags: Tag[]
   images: Image[]
   attributes: Attribute[]
-  default_attributes: any[]
+  default_attributes: DefaultAttributes[]
   variations: number[]
-  grouped_products: any[]
+  grouped_products: string[]
   menu_order: number
   meta_data: MetaDatum[]
   _links: Links
@@ -149,7 +169,7 @@ export interface ProductVariation {
   purchasable: boolean
   virtual: boolean
   downloadable: boolean
-  downloads: any[]
+  downloads: Download[]
   download_limit: number
   download_expiry: number
   tax_status: string
