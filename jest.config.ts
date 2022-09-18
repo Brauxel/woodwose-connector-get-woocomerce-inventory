@@ -12,7 +12,7 @@ const config: Config = {
   },
   testMatch: ['**/__tests__/**/*.test.(ts|js)'],
   testEnvironment: 'node',
-  setupFiles: ['./.jest/jest.setup.ts', './.jest/env.js'],
+  setupFiles: ['./jest/jest.setup.ts', './jest/env.js'],
   testPathIgnorePatterns: ['/node_modules/', '/dist/'],
 }
 
