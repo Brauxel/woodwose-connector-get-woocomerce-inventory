@@ -1,5 +1,9 @@
 import WooCommerceRestApi from '@woocommerce/woocommerce-rest-api'
-import { Product, ProductVariation } from '../../@types/WooCommerceTypes'
+import {
+  Attribute,
+  Product,
+  ProductVariation,
+} from '../../@types/WooCommerceTypes'
 import { logAndThrowError } from '../logger/loggerHelpers'
 
 export const createWooCommerceApi = (
@@ -44,14 +48,18 @@ export const getWooCommerceProductVariations = async (
     })
 }
 
+export const extractAttributeOption = (
+  attributes: Attribute[],
+  identifier: string
+) => attributes.find(({ name }) => name.toLowerCase() == identifier)?.option
+
 export const extractDataFromVariations = (variations: ProductVariation[]) =>
   variations.map(
     ({ id, sku, price, stock_quantity, permalink, attributes }) => ({
       id,
       sku,
       price,
-      size: attributes.find(({ name }) => name.toLowerCase() === 'size')
-        ?.option,
+      size: extractAttributeOption(attributes, 'size'),
       quantity: stock_quantity,
       permalink,
     })
