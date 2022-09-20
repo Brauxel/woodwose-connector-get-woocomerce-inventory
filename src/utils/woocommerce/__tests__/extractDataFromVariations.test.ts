@@ -1,5 +1,8 @@
 import { productVariationsMockData } from '../../../mocks/wooCommerce/ProductData'
-import { extractDataFromVariations } from '../wooCommerceApi'
+import {
+  extractAttributeOption,
+  extractDataFromVariations,
+} from '../wooCommerceApi'
 
 describe('extractDataFromVariations', () => {
   it('should extract the id, size, sku, price, quantity and permalink', () => {
@@ -23,5 +26,37 @@ describe('extractDataFromVariations', () => {
           'https://woodwose.in/product/mens-bamboo-dark-grey-t-shirt/?attribute_pa_size=l',
       },
     ])
+  })
+})
+
+describe('extractAttributeOption', () => {
+  it('should return the option stored in the matching attribute', () => {
+    expect(
+      extractAttributeOption(
+        [
+          {
+            id: 1,
+            name: 'Size',
+            option: 'XL',
+          },
+        ],
+        'size'
+      )
+    ).toBe('XL')
+  })
+
+  it('should not return an option if no matching attribute', () => {
+    expect(
+      extractAttributeOption(
+        [
+          {
+            id: 1,
+            name: 'not a match',
+            option: 'XL',
+          },
+        ],
+        'size'
+      )
+    ).toBe(undefined)
   })
 })

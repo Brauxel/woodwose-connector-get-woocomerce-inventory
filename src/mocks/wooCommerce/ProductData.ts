@@ -57,6 +57,11 @@ export const productVariationsMockData: ProductVariation[] = [
         name: 'Size',
         option: 'XL',
       },
+      {
+        id: 2,
+        name: 'random-attribute',
+        option: 'random-option',
+      },
     ],
     menu_order: 4,
     meta_data: [

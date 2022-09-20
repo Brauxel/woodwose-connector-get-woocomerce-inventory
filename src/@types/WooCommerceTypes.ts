@@ -4,7 +4,7 @@ interface MetaDatum {
   value: string
 }
 
-interface Attribute {
+export interface Attribute {
   id: number
   name: string
   option: string
