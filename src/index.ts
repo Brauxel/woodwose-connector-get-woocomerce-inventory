@@ -18,7 +18,7 @@ export const handler = async (): Promise<APIGatewayProxyResult> => {
   }
 }
 
-// If we're developing on our local machine, we run the handler function to develop on our local machine
+// If we're developing on our local machine, we run the handler function so we can debug the code
 if (process.env.NODE_ENV === 'local') {
   handler()
 }
