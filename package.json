@@ -5,14 +5,16 @@
   "main": "index.js",
   "scripts": {
     "clean": "rimraf dist/",
-    "build-ts": "tsc",
-    "watch-ts": "tsc -w",
+    "build-tsc": "npm run clean && tsc",
+    "watch-tsc": "npm run clean && tsc -w",
     "test": "jest --forceExit --coverage --verbose",
     "watch-test": "npm run test -- --watchAll",
     "lint": "tsc --noEmit && eslint \"**/*.{js,ts}\" --quiet --fix",
-    "serve-debug": "nodemon --inspect dist/index.js",
-    "watch-debug": "concurrently -k -p \"[{name}]\" -n \"TypeScript,Node\" -c \"yellow.bold,cyan.bold,green.bold\" \"npm run watch-ts\" \"npm run serve-debug\"",
-    "prepare": "husky install"
+    "serve-debug": "NODE_ENV=local nodemon --inspect dist/index.js",
+    "watch-debug": "concurrently -k -p \"[{name}]\" -n \"TypeScript,Node\" -c \"yellow.bold,cyan.bold,green.bold\" \"npm run watch-tsc\" \"npm run serve-debug\"",
+    "prepare": "husky install",
+    "build-eslint": "npm run clean && esbuild src/index.ts --bundle --minify --sourcemap --platform=node --target=es2020 --outfile=dist/index.js",
+    "postbuild-eslint": "cd dist && zip -r index.zip index.js*"
   },
   "repository": {
     "type": "git",
@@ -25,11 +27,13 @@
   },
   "homepage": "https://github.com/Brauxel/woodwose-connector-get-woocomerce-inventory#readme",
   "devDependencies": {
+    "@types/aws-lambda": "^8.10.104",
     "@types/jest": "^29.0.2",
     "@types/woocommerce__woocommerce-rest-api": "^1.0.2",
     "@typescript-eslint/eslint-plugin": "^5.37.0",
     "@typescript-eslint/parser": "^5.37.0",
     "concurrently": "^7.4.0",
+    "esbuild": "^0.15.8",
     "eslint": "^8.23.1",
     "eslint-config-prettier": "^8.5.0",
     "husky": "^8.0.1",

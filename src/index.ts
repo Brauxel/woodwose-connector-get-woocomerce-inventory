@@ -1,4 +1,5 @@
 import { fetchAndCreateWooCommerceData } from './resources/get-inventory'
+import { APIGatewayProxyResult } from 'aws-lambda'
 import { hydrateEnv } from './utils/hydrators/secrets'
 
 process.on('uncaughtException', (err) => {
@@ -6,10 +7,18 @@ process.on('uncaughtException', (err) => {
   process.exit(1) //mandatory (as per the Node.js docs)
 })
 
-const start = async () => {
-  await hydrateEnv()
+hydrateEnv()
+export const handler = async (): Promise<APIGatewayProxyResult> => {
   const data = await fetchAndCreateWooCommerceData()
-  return data
+  return {
+    statusCode: 200,
+    body: JSON.stringify({
+      data,
+    }),
+  }
 }
 
-start()
+// If we're developing on our local machine, we run the handler function so we can debug the code
+if (process.env.NODE_ENV === 'local') {
+  handler()
+}
