@@ -4,6 +4,6 @@
 
 ### Update the current lambda function
 
-aws lambda update-function-code \
- --function-name getWooCommerceInventory \
- --zip-file fileb://dist/index.zip
+First run `npm run build-eslint`
+Next run
+`aws lambda update-function-code \ --function-name getWooCommerceInventory \ --zip-file fileb://dist/index.zip`
