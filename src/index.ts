@@ -8,8 +8,10 @@ process.on('uncaughtException', (err) => {
 export const handler = async (): Promise<APIGatewayProxyResult> => {
   return {
     statusCode: 200,
-    body: JSON.stringify({
-      message: 'hello world',
-    }),
+    headers: {
+      'Access-Control-Allow-Origin': '*', // Required for CORS support to work
+      'Access-Control-Allow-Credentials': true, // Required for cookies, authorization headers with HTTPS
+    },
+    body: JSON.stringify({ message: 'Hello from code editor!' }),
   }
 }
