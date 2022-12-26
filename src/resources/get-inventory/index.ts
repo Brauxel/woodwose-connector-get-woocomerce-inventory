@@ -17,6 +17,7 @@ export const fetchAndCreateWooCommerceData = async () => {
       sanitizedData.push({
         id: product.id,
         name: product.name,
+        slug: product.slug,
         variations: extractDataFromVariations(variations as ProductVariation[]),
       })
     }
