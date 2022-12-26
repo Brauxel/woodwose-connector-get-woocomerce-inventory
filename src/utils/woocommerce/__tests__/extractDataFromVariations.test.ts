@@ -13,6 +13,8 @@ describe('extractDataFromVariations', () => {
         price: '899',
         size: 'XL',
         quantity: 2,
+        date_created_gmt: '2022-11-23T05:47:06',
+        date_modified_gmt: '2022-11-23T05:47:06',
         permalink:
           'https://woodwose.in/product/mens-bamboo-dark-grey-t-shirt/?attribute_pa_size=xl',
       },
@@ -22,6 +24,8 @@ describe('extractDataFromVariations', () => {
         price: '899',
         size: 'L',
         quantity: 1,
+        date_created_gmt: '2022-11-23T05:47:06',
+        date_modified_gmt: '2022-11-23T05:47:06',
         permalink:
           'https://woodwose.in/product/mens-bamboo-dark-grey-t-shirt/?attribute_pa_size=l',
       },

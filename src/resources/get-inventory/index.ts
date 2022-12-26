@@ -18,6 +18,8 @@ export const fetchAndCreateWooCommerceData = async () => {
         id: product.id,
         name: product.name,
         slug: product.slug,
+        date_created_gmt: product.date_created_gmt,
+        date_modified_gmt: product.date_modified_gmt,
         variations: extractDataFromVariations(variations as ProductVariation[]),
       })
     }

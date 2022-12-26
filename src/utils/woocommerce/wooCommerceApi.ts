@@ -55,12 +55,23 @@ export const extractAttributeOption = (
 
 export const extractDataFromVariations = (variations: ProductVariation[]) =>
   variations.map(
-    ({ id, sku, price, stock_quantity, permalink, attributes }) => ({
+    ({
+      id,
+      sku,
+      price,
+      stock_quantity,
+      permalink,
+      attributes,
+      date_created_gmt,
+      date_modified_gmt,
+    }) => ({
       id,
       sku,
       price,
       size: extractAttributeOption(attributes, 'size'),
       quantity: stock_quantity,
       permalink,
+      date_created_gmt,
+      date_modified_gmt,
     })
   )
