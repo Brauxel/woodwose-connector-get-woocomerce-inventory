@@ -3,10 +3,10 @@ import { ProductVariation } from '../../@types/WooCommerceTypes'
 export const productVariationsMockData: ProductVariation[] = [
   {
     id: 5019,
-    date_created: new Date('2022-07-18T11:57:03'),
-    date_created_gmt: new Date('2022-07-18T06:27:03'),
-    date_modified: new Date('2022-09-01T13:21:59'),
-    date_modified_gmt: new Date('2022-09-01T07:51:59'),
+    date_created: '2022-11-23T05:47:06',
+    date_created_gmt: '2022-11-23T05:47:06',
+    date_modified: '2022-11-23T05:47:06',
+    date_modified_gmt: '2022-11-23T05:47:06',
     description: '',
     permalink:
       'https://woodwose.in/product/mens-bamboo-dark-grey-t-shirt/?attribute_pa_size=xl',
@@ -116,10 +116,10 @@ export const productVariationsMockData: ProductVariation[] = [
   },
   {
     id: 5018,
-    date_created: new Date('2022-07-18T11:57:03'),
-    date_created_gmt: new Date('2022-07-18T06:27:03'),
-    date_modified: new Date('2022-09-01T23:12:36'),
-    date_modified_gmt: new Date('2022-09-01T17:42:36'),
+    date_created: '2022-11-23T05:47:06',
+    date_created_gmt: '2022-11-23T05:47:06',
+    date_modified: '2022-11-23T05:47:06',
+    date_modified_gmt: '2022-11-23T05:47:06',
     description: '',
     permalink:
       'https://woodwose.in/product/mens-bamboo-dark-grey-t-shirt/?attribute_pa_size=l',

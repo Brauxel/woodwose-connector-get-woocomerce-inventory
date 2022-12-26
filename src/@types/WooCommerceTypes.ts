@@ -151,10 +151,10 @@ export interface Product {
 export interface ProductVariation {
   id: number
   permalink: string
-  date_created: Date
-  date_created_gmt: Date
-  date_modified: Date
-  date_modified_gmt: Date
+  date_created: string
+  date_created_gmt: string
+  date_modified: string
+  date_modified_gmt: string
   status: string
   description: string
   sku: string
